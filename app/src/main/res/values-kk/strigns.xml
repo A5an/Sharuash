@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sharuash</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="resend">Сұрауыңызды қайталаға өтінеміз!</string>
+    <string name="resend2">Жауапты жүктеу мүмкін болмады, себебі:</string>
+    <string name="iam">Мен үй жануарларының иелеріне және жануарлардың жалпы тақырыбына көмекшімін.</string>
+    <string name="send">Хабарлама жіберу</string>
+    <string name="delete">Жойылды</string>
+    <string name="typing">Жазуда...</string>
+    <string name="mapset">Орынға рұқсат беріңіз!</string>
+
+    <string name="home">Басты бет</string>
+    <string name="profile">Профиль</string>
+    <string name="map">Карта</string>
+    <string name="bulb">Кеңес</string>
+    <string name="info">Информация</string>
+
+    <string name="animal">Үй жануары</string>
+    <string name="animalname">Лақап аты</string>
+    <string name="animal2">Жануар</string>
+    <string name="poroda">Тұқымы</string>
+    <string name="poroda2">Тұқымы:</string>
+    <string name="save">Сақтау</string>
+    <string name="pol">Жынысы</string>
+    <string name="pol2">Жынысы:</string>
+    <string name="collar">Жағасы бар ма?</string>
+    <string name="collar2">Жаға:</string>
+    <string name="havecollar">Бар</string>
+    <string name="nocollar">Жоқ</string>
+    <string name="progress">Жүктеу...</string>
+    <string name="mylocatoin">Менің орналасқан жерім</string>
+    <string name="net">Интернет байланысы жоқ. Желі параметрлерін тексеріңіз.</string>
+    <string name="net2">Firebase дерекқорының қатесі:</string>
+    <string name="noimage">Сурет таңдалмаған</string>
+
+
+
+    <string name="titlebulb1">Ветеринар</string>
+    <string name="textbulb1">Ветеринар деген кім?
+Ветеринарлар-бұл үй жануарлары мен жабайы жануарлардың әртүрлі түрлеріне медициналық көмек пен күтімді қамтамасыз ету үшін оқытылатын және жұмыс істейтін Жануарлар денсаулығының мамандары. Олардың міндеттеріне ауруларды диагностикалау, емдеу және алдын алу, сондай-ақ хирургиялық араласу және жануарларға жалпы күтім жасау кіреді.
+
+Неліктен ветеринарлар соншалықты маңызды?
+Денсаулық сақтау: ветеринарлар сіздің үй жануарыңыздың денсаулығы мен әл-ауқатын сақтауға көмектеседі. Ветеринарға үнемі бару ауруды ерте кезеңдерде анықтауға және алдын алуға көмектеседі.
+
+Алдын алу: ветеринарлар вакцинация жасайды және үй жануарыңызды қауіпті инфекциялар мен паразиттерден қорғау үшін алдын алу шараларын ұсынады.
+
+Емдеу: ауру немесе жарақат алған жағдайда ветеринарлар медициналық көмек көрсетеді және сіздің үй жануарыңызды жеңілдету үшін емдеу жоспарын жасайды.
+
+Хирургия: ветеринарлар зарарсыздандыру, кесарь тілігі және ісіктерді жою сияқты хирургиялық операцияларды жасауға үйретілген.
+
+Кеңестер мен нұсқаулар: олар сонымен қатар дұрыс тамақтану, күтім жасау, жануарды тәрбиелеу және үйрету туралы кеңестердің тамаша көзі болып табылады.
+
+Ветеринарға қашан және қаншалықты жиі бару керек?
+Тұрақты тексерулер: үй жануарларын ветеринармен үнемі тексеріп отыру ұсынылады. Бұл жасырын мәселелерді олар нашарлағанға дейін анықтауға көмектеседі.
+
+Өзекті егулер: үй жануарларында сіздің ветеринарыңыздың ұсыныстарына сәйкес өзекті егулер болуы керек.
+
+Шұғыл көмек: егер сіздің үй жануарыңызда ауру, жарақат немесе әдеттен тыс мінез-құлық белгілері болса, медициналық көмекке жүгінуден тартынбаңыз.
+
+Қорытынды
+Ветеринарлар сіздің үй жануарларыңыздың денсаулығы мен бақытына қамқорлық жасаудың негізгі элементі болып табылады. Ветеринарға үнемі бару және қажет болған жағдайда уақтылы қарау сіздің үй жануарыңыздың жылдар бойы сау және белсенді болуына көмектеседі. Жүнді досыңызға қамқорлық жасаңыз, ол сізге сүйіспеншілік пен адалдықпен жауап береді!</string>
+
+    <string name="google_maps_key">AIzaSyASO95vCcQNQrzr0lERusMhR62QUjEMxB0</string>
+
+    <string name="search">Іздеу</string>
+    <string name="anotherlan">Қазақ тілін таңдау</string>
+    <string name="anotherlan2">Орыс тілін таңдау</string>
+    <string name="chat">Қолдау чаты</string>
+    <string name="imagechn">Суретті өзгерту</string>
+    <string name="quit">Шығу</string>
+    <string name="findveter">Ветеринарлық клиникаларды табу</string>
+
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps123">Maps123Activity</string>
+    <string name="title_activity_mapsthis">MapsthisActivity</string>
+    <string name="title_activity_just_map">JustMap</string>
+    <string name="title_activity_maps_activitydsdslkfj">MapsActivitydsdslkfj</string>
+
+</resources>

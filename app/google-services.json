@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "806826489792",
+    "project_id": "sharsha-8e860",
+    "storage_bucket": "sharsha-8e860.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806826489792:android:28a8716c930ee0dee07a25",
+        "android_client_info": {
+          "package_name": "easy.life.sharuash"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZN2KjrgimyxjYNTWYSw3KlhFgKYHYd8I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

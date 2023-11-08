@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">Sharuash</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="net2">Ошибка базы данных Firebase:</string>
+    <string name="net">Нет подключения к Интернету. Пожалуйста, проверьте настройки вашей сети.</string>
+    <string name="send">Отправить сообщение</string>
+    <string name="resend">Повторите свой запрос пожалуйста!</string>
+    <string name="resend2">Не удалось загрузить ответ из-за:</string>
+    <string name="iam">Я - помощник для домашних хозяев животных и общей темы животных.</string>
+    <string name="typing">Пишет...</string>
+    <string name="mapset">Дайте разрешение на местоположение!</string>
+
+    <string name="home">Главная</string>
+    <string name="profile">Профиль</string>
+    <string name="delete">Удалено</string>
+    <string name="map">Карта</string>
+    <string name="bulb">Советы</string>
+
+    <string name="animal">Домашнее животное</string>
+    <string name="animal2">Животное</string>
+    <string name="animalname">Кличка</string>
+    <string name="save">Сохранить</string>
+    <string name="poroda">Порода</string>
+    <string name="poroda2">Порода:</string>
+    <string name="pol">Пол</string>
+    <string name="pol2">Пол:</string>
+    <string name="collar">Есть ошейник?</string>
+    <string name="collar2">Ошейник:</string>
+    <string name="havecollar">Присутсвует</string>
+    <string name="nocollar">Отсутствует</string>
+    <string name="noimage">Изображение не выбрано</string>
+    <string name="progress">Загрузка...</string>
+
+    <string name="mylocatoin">Мое местоположение</string>
+    <string name="titlebulb1">Ветеринар</string>
+    <string name="textbulb1">Кто такой ветеринар?
+Ветеринары - это специалисты по здоровью животных, которые обучаются и работают, чтобы обеспечивать медицинскую помощь и заботу о различных видов домашних и дикоросов животных. Их обязанности включают в себя диагностику, лечение и предотвращение заболеваний, а также хирургические вмешательства и общий уход за животными.
+
+Почему ветеринары так важны?
+Забота о здоровье: Ветеринары помогают поддерживать здоровье и благополучие вашего питомца. Регулярные визиты к ветеринару помогают выявлять и предотвращать болезни на ранних стадиях.
+
+Профилактика: Ветеринары проводят вакцинации и рекомендуют профилактические меры, чтобы защитить вашего питомца от опасных инфекций и паразитов.
+
+Лечение: В случае заболевания или травмы ветеринары предоставляют медицинскую помощь и разрабатывают план лечения, чтобы вашему питомцу стало легче.
+
+Хирургия: Ветеринары обучены производить хирургические операции, такие как стерилизация, кесарево сечение и удаление опухолей.
+
+Советы и инструкции: Они также являются отличными источниками советов о правильном питании, уходе за шерстью, воспитании и тренировке животного.
+
+Когда и как часто следует обращаться к ветеринару?
+Регулярные осмотры: Рекомендуется проводить регулярные осмотры вашего питомца у ветеринара. Это поможет выявить скрытые проблемы до их усугубления.
+
+Актуальные прививки: Питомцы должны иметь актуальные прививки согласно рекомендациям вашего ветеринара.
+
+Неотложная помощь: Если у вашего питомца появились симптомы болезни, травмы или необычного поведения, не стесняйтесь обращаться за медицинской помощью.
+
+Заключение
+Ветеринары - это ключевой элемент заботы о здоровье и счастье ваших домашних животных. Регулярные посещения ветеринара и своевременное обращение в случае необходимости помогут вашему питомцу оставаться здоровым и активным на протяжении многих лет. Позаботьтесь о вашем пушистом друге, и он ответит вам любовью и преданностью!</string>
+
+    <string name="google_maps_key">AIzaSyASO95vCcQNQrzr0lERusMhR62QUjEMxB0</string>
+
+    <string name="search">Поиск</string>
+    <string name="anotherlan">Выбрать казахский язык</string>
+    <string name="anotherlan2">Выбрать руский язык</string>
+    <string name="chat">Чат поддержки</string>
+    <string name="imagechn">Изменить изображение</string>
+    <string name="quit">Выйти</string>
+    <string name="findveter">Найти ветеринарные клиники</string>
+
+
+    <string name="info">Информация</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps123">Maps123Activity</string>
+    <string name="title_activity_mapsthis">MapsthisActivity</string>
+    <string name="title_activity_just_map">JustMap</string>
+    <string name="title_activity_maps_activitydsdslkfj">MapsActivitydsdslkfj</string>
+
+    <string-array name="countries">
+        <item>Страна рождения</item>
+        <item></item>
+        <item></item>
+        <item>Казахстан</item>
+        <item>Россия</item>
+    </string-array>
+    <string-array name="pol">
+        <item>Пол</item>
+        <item>Самец</item>
+        <item>Самка</item>
+    </string-array>
+</resources>
