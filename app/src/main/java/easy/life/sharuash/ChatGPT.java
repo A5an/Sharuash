@@ -58,6 +58,7 @@ public class ChatGPT extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chatgpt);
 
+
         responseHandler = new Handler(Looper.getMainLooper());
 
         toolbar = findViewById(R.id.myToolBar1);
@@ -121,6 +122,7 @@ public class ChatGPT extends AppCompatActivity {
         addToChat(text1, Message.SENT_BY_BOT);
         Animation();
 
+        String apikey = BuildConfig.AI_API;
 
         JSONObject jsonBody = new JSONObject();
         try {
@@ -145,7 +147,7 @@ public class ChatGPT extends AppCompatActivity {
         RequestBody body = RequestBody.create(jsonBody.toString(),JSON);
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/chat/completions")
-                .header("Authorization","Bearer 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")
+                .header("Authorization","Bearer "+apikey)
                 .post(body)
                 .build();
 

@@ -77,6 +77,7 @@
 
 
     <string name="info">Информация</string>
+    <string name="firsttext">Здравствуйте! Я полезный помощник для хозяев домашних животных и всех тем, связанных с животными.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps123">Maps123Activity</string>

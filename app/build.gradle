@@ -16,7 +16,15 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        Properties properties = new Properties()
+        properties.load(new FileInputStream(rootProject.file("local.properties")))
+
+        buildConfigField "String", "AI_API", "\"${properties.getProperty("AI_API")}\""
+        buildConfigField "String", "GOG_API", "\"${properties.getProperty("GOG_API")}\""
+
     }
+
 
     buildTypes {
         release {

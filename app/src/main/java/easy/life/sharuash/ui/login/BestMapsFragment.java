@@ -55,6 +55,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import easy.life.sharuash.BuildConfig;
 import easy.life.sharuash.R;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -120,12 +122,14 @@ public class BestMapsFragment extends Fragment {
 
             OkHttpClient client = new OkHttpClient();
 
+            String api_key = BuildConfig.GOG_API;
+
             StringBuilder stringBuilder = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
             stringBuilder.append("location=" + lat + "," + lng);
             stringBuilder.append("&radius=6000");
             stringBuilder.append("&keyword=ветеренарная");
             stringBuilder.append("&sensor=true");
-            stringBuilder.append("&key=AIzaSyASO95vCcQNQrzr0lERusMhR62QUjEMxB0");
+            stringBuilder.append("&key="+api_key);
             String url = stringBuilder.toString();
 
             Request request = new Request.Builder()
