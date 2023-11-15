@@ -1,21 +1,31 @@
 package easy.life.sharuash.ui.login;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.GeofencingClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -48,6 +58,7 @@ import com.karumi.dexter.listener.single.PermissionListener;
 
 
 import java.io.IOException;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -75,7 +86,8 @@ public class BestMapsFragment extends Fragment {
     Handler handler = new Handler();
     List<Marker> markerList = new ArrayList<>();
     private boolean isMapReady = false;
-
+    private GeofencingClient geofencingClient;
+    private static final int EARTH_RADIUS = 6371;
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
         @Override
         public void onMapReady(GoogleMap googleMap) {
@@ -85,6 +97,8 @@ public class BestMapsFragment extends Fragment {
             databaseReference1 = FirebaseDatabase.getInstance().getReference("Location");
             GoogleMap finalGoogleMap = googleMap;
 
+
+
             eventListener = databaseReference1.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -92,18 +106,18 @@ public class BestMapsFragment extends Fragment {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            if (rassbian == false){
+                            if (rassbian == false) {
                                 String loc = snapshot.getValue(String.class);
                                 String[] latLngArray = loc.split(",");
                                 double latitude = Double.parseDouble(latLngArray[0].trim());
                                 double longitude = Double.parseDouble(latLngArray[1].trim());
+
                                 Marker marker1 = finalGoogleMap.addMarker(new MarkerOptions()
                                         .position(new LatLng(latitude, longitude))
                                         .title("animal"));
                                 markerList.add(marker1);
                                 rassbian = true;
-                            }
-                            else if(rassbian == true){
+                            } else if (rassbian == true) {
                                 Marker markerToDelete = markerList.get(0);
                                 markerToDelete.remove();
                                 markerList.remove(markerToDelete);
@@ -114,6 +128,7 @@ public class BestMapsFragment extends Fragment {
                     }, 1000);
 
                 }
+
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
 
@@ -129,7 +144,7 @@ public class BestMapsFragment extends Fragment {
             stringBuilder.append("&radius=6000");
             stringBuilder.append("&keyword=ветеренарная");
             stringBuilder.append("&sensor=true");
-            stringBuilder.append("&key="+api_key);
+            stringBuilder.append("&key=" + api_key);
             String url = stringBuilder.toString();
 
             Request request = new Request.Builder()
@@ -189,8 +204,10 @@ public class BestMapsFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         context = getActivity();
+        geofencingClient = LocationServices.getGeofencingClient(requireActivity());
         return inflater.inflate(R.layout.fragment_best_maps, container, false);
     }
+
     public void onStart() {
         super.onStart();
         SupportMapFragment mapFragment =
@@ -219,6 +236,19 @@ public class BestMapsFragment extends Fragment {
                     }
                 }).check();
 
+    }
+
+
+    private void showNotification() {
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "channel_id")
+                .setContentTitle("Pet Alert")
+                .setContentText("Your pet is outside the allowed area!")
+                .setSmallIcon(R.drawable.ic_settings)
+                .setPriority(NotificationCompat.PRIORITY_HIGH);
+
+        notificationManager.notify(1, builder.build());
     }
 
 
