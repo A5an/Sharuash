@@ -8,7 +8,7 @@
 
 <body>
 
-  <h1>Sharuash Android Application Documentation</h1>
+  <h1>Sharuashylyq Android Application Documentation</h1>
 
   <h2 id="introduction">1. Introduction</h2>
 
@@ -97,7 +97,7 @@
 
    <h2 id="conclusion">5. Conclusion</h2>
 
-  <p>The Sharuash Android Application effectively addresses the issue of missing pets, providing innovative solutions for pet care and loss prevention.</p>
+  <p>The Sharuashylyq Android Application effectively addresses the issue of missing pets, providing innovative solutions for pet care and loss prevention.</p>
 
   
 </body>
