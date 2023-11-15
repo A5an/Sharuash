@@ -24,10 +24,10 @@
         <li><strong>Pet Location Tracking via Collar</strong></li>
         <li><strong>Animal Care Tips Section</strong></li>
         <li><strong>AI-Based Chatbot</strong></li>
-        <li><strong>Technical Support Chat</strong></li>
+        <li><strong>Settings section</strong></li>
     </ul>
 
-   <h2 id="getting-started">4. Getting Started</h2>
+   <h2 id="getting-started">3. Getting Started</h2>
 
    <h3 id="prerequisites">Prerequisites</h3>
     <ul>
@@ -43,13 +43,24 @@
         <li>Install the application.</li>
     </ol>
 
-  <h2 id="usage">5. Usage</h2>
+  <h2 id="usage">4. Usage</h2>
 
   <h3 id="authentication">Authentication</h3>
     <p>Users authenticate via phone number for secure access to the application.</p>
+    <div>
+    <img src="app/src/main/res/drawable/auth1activity.jpeg" height="400px" width="200px">
+        <img src="app/src/main/res/drawable/auth2activity.jpeg" height="400px" width="200px"> 
+</div>
+
 
   <h3 id="pet-information">Pet Information</h3>
     <p>Store and manage your pet's information, including photo, name, gender, and collar presence.</p>
+<div>
+    <img src="app/src/main/res/drawable/createactivity.jpeg" height="400px" width="200px">
+        <img src="app/src/main/res/drawable/updateactivity.jpeg" height="400px" width="200px"> 
+    <img src="app/src/main/res/drawable/detailactivity.jpeg" height="400px" width="200px"> 
+</div>
+
 
   <h3 id="location-services">Location Services</h3>
     <ul>
@@ -57,38 +68,37 @@
         <li><strong>Pet Location Tracking:</strong> Monitor your pet's location using the smart collar and GPS module.</li>
     </ul>
 
+<div>
+    <img src="app/src/main/res/drawable/mapactivity.jpeg" height="400px" width="200px">
+</div>
+
    <h3 id="animal-care-tips">Animal Care Tips</h3>
     <p>Access a section with various tips on caring for animals.</p>
+
+<div>
+    <img src="app/src/main/res/drawable/suggestactivity.jpeg" height="400px" width="200px">
+        <img src="app/src/main/res/drawable/textactivity.jpeg" height="400px" width="200px"> 
+</div>
+
 
   <h3 id="ai-based-chatbot">AI-Based Chatbot</h3>
     <p>Engage with an AI-based chatbot for personalized advice on pet care and general animal husbandry.</p>
 
-  <h3 id="technical-support">Technical Support</h3>
-    <p>A dedicated chat for user assistance and technical support.</p>
+<div>
+    <img src="app/src/main/res/drawable/gptactivity.jpeg" height="400px" width="200px">
+</div>
 
-  <h2 id="project-development">6. Project Development</h2>
+  <h3 id="technical-support">Settings section</h3>
+    <p>Section for users to configure the app and dedicated technical support.</p>
 
-  <h3 id="implementation-methods">Implementation Methods</h3>
-    <p>The project involved a literature review, prototype creation, and the development of a mobile application in Android Studio using Java.</p>
+<div>
+    <img src="app/src/main/res/drawable/setactivity.jpeg" height="400px" width="200px">
+</div>
 
-   <h3 id="result-of-work">Result of Work</h3>
-    <ul>
-        <li>Application created with modules in Russian and Kazakh languages.</li>
-        <li>Utilizes Raspberry Pi3 as the smart collar model with a Ublox NEO-6M GPS module.</li>
-        <li>Detailed 3D model of the internal collar components.</li>
-    </ul>
-
-   <h2 id="conclusion">7. Conclusion</h2>
+   <h2 id="conclusion">5. Conclusion</h2>
 
   <p>The Sharuash Android Application effectively addresses the issue of missing pets, providing innovative solutions for pet care and loss prevention.</p>
 
-  <h2 id="future-plans">8. Future Plans</h2>
-    <ol>
-        <li><strong>Further Development:</strong> Complete the smart collar, develop a web application, and enhance functionality.</li>
-        <li><strong>Collecting Feedback:</strong> Actively gather user feedback for continuous improvement.</li>
-        <li><strong>Partnerships and Government Support:</strong> Collaborate with veterinary clinics and seek official government support.</li>
-        <li><strong>Adaptation for Agriculture:</strong> Tailor the project for use in agriculture.</li>
-    </ol>
   
 </body>
 
