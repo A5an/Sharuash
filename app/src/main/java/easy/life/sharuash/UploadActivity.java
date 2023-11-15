@@ -150,54 +150,43 @@ public class UploadActivity extends AppCompatActivity {
     }
 
 
-    // Метод для загрузки данных о животном
     public void uploadData() {
-        // Получение строковых ресурсов для сообщений о сети
         String net2 = getString(R.string.net2);
         String net = getString(R.string.net);
 
-        // Извлечение данных из пользовательского ввода
         String title = Topic.getText().toString();
         String desc = Desc.getText().toString();
         String lang = Lang.getText().toString();
 
-        // Создание объекта DataClass с полученными данными
         DataClass dataClass = new DataClass(title, desc, lang, imageURL, isChecked);
 
-        // Получение текущей даты и времени
         String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 
-        // Получение номера телефона из SharedPreferences
         SharedPreferences pref = getSharedPreferences("Phone number", MODE_PRIVATE);
         String phoneNumber = pref.getString("Phone number kz", "");
 
-        // Проверка доступности сети
         if (isNetworkConnected()) {
-            // Отправка данных в Firebase Realtime Database и добавление обработчика успешного выполнения
             FirebaseDatabase.getInstance().getReference(phoneNumber).child(currentDate)
                     .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-                                // Если операция завершена успешно, отобразить сообщение "Сохранено!"
                                 Toast.makeText(UploadActivity.this, "Сохранено!", Toast.LENGTH_SHORT).show();
-                                finish(); // Закрыть текущую активность
+                                finish();
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            // Если операция завершится неудачно, отобразить сообщение об ошибке сети
+
                             Toast.makeText(UploadActivity.this, net2 + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                         }
                     });
         } else {
-            // Если сеть недоступна, отобразить сообщение о недоступности сети
             Toast.makeText(UploadActivity.this, net, Toast.LENGTH_SHORT).show();
         }
     }
 
-    // Метод для проверки подключения к сети
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo Network = cm.getActiveNetworkInfo();

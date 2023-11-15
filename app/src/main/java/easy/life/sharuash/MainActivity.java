@@ -76,38 +76,38 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void otpSend() {
-        binding.progressBar.setVisibility(View.VISIBLE);  // Показать полосу прогресса
-        binding.generateOtp.setVisibility(View.INVISIBLE);  // Скрыть кнопку "generateOtp"
+        binding.progressBar.setVisibility(View.VISIBLE);
+        binding.generateOtp.setVisibility(View.INVISIBLE);
 
-        // Определение обратных вызовов для проверки номера телефона
+
         mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
             @Override
             public void onVerificationCompleted(PhoneAuthCredential credential) {
-                session.setLogin(true);  // Установка статуса входа пользователя
+                session.setLogin(true);
             }
 
             @Override
             public void onVerificationFailed(FirebaseException e) {
-                binding.progressBar.setVisibility(View.GONE);  // Скрыть полосу прогресса
-                binding.generateOtp.setVisibility(View.VISIBLE);  // Показать кнопку "generateOtp"
-                Toast.makeText(MainActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();  // Отобразить сообщение об ошибке
+                binding.progressBar.setVisibility(View.GONE);
+                binding.generateOtp.setVisibility(View.VISIBLE);
+                Toast.makeText(MainActivity.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onCodeSent(@NonNull String verificationId,
                                    @NonNull PhoneAuthProvider.ForceResendingToken token) {
-                binding.progressBar.setVisibility(View.GONE);  // Скрыть полосу прогресса
-                binding.generateOtp.setVisibility(View.VISIBLE);  // Показать кнопку "generateOtp"
+                binding.progressBar.setVisibility(View.GONE);
+                binding.generateOtp.setVisibility(View.VISIBLE);
                 Toast.makeText(MainActivity.this, "Код успешно отправлен!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this, MainActivity2.class);  // Создание пути до MainActivity2
-                intent.putExtra("phone", binding.mobileNumber.getText().toString().trim());  // Передача номера телефона как дополнительной информации
-                intent.putExtra("verificationId", verificationId);  // Передача идентификатора проверки как дополнительной информации
-                startActivity(intent);  // Запуск MainActivity2
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                intent.putExtra("phone", binding.mobileNumber.getText().toString().trim());
+                intent.putExtra("verificationId", verificationId);
+                startActivity(intent);
             }
         };
 
-        // Настройка параметров проверки номера телефона
+
         PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(mAuth)
                         .setPhoneNumber("+7"+binding.mobileNumber.getText().toString().trim())
@@ -115,6 +115,6 @@ public class MainActivity extends AppCompatActivity {
                         .setActivity(this)
                         .setCallbacks(mCallbacks)
                         .build();
-        PhoneAuthProvider.verifyPhoneNumber(options);  // Инициирование проверки номера телефона
+        PhoneAuthProvider.verifyPhoneNumber(options);
     }
 }

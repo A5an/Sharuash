@@ -46,7 +46,6 @@ public class DetailActivity extends AppCompatActivity {
         String havecol = getString(R.string.havecollar);
         String nocol = getString(R.string.nocollar);
 
-        // Получение данных из Intent
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             Desc.setText(bundle.getString("Description"));
@@ -64,27 +63,23 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         String deleted = getString(R.string.delete);
-        // Получение номера телефона из SharedPreferences
         SharedPreferences pref = getSharedPreferences("Phone number", MODE_PRIVATE);
         String phoneNumber = pref.getString("Phone number kz", "");
 
-        // Обработчик кнопки удаления
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final DatabaseReference reference = FirebaseDatabase.getInstance().getReference(phoneNumber);
-                reference.child(key).removeValue(); // Удаление данных из базы
-                Toast.makeText(DetailActivity.this, deleted, Toast.LENGTH_SHORT).show(); // Отображение сообщения об удалении
-                startActivity(new Intent(getApplicationContext(), Main2.class)); // Переход к Main2
-                finish(); // Закрыть текущую активность
+                reference.child(key).removeValue();
+                Toast.makeText(DetailActivity.this, deleted, Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), Main2.class));
+                finish();
             }
         });
 
-        // Обработчик кнопки редактирования
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Передача данных для редактирования в UpdateActivity
                 Intent intent = new Intent(DetailActivity.this, UpdateActivity.class)
                         .putExtra("Title", Title.getText().toString())
                         .putExtra("Description", Desc.getText().toString())

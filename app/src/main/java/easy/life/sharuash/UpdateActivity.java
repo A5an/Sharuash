@@ -167,46 +167,33 @@ public class UpdateActivity extends AppCompatActivity {
             Toast.makeText(UpdateActivity.this, net, Toast.LENGTH_SHORT).show();
         }
     }
-    // Метод для обновления данных
     public void updateData() {
-        // Получение строковых ресурсов для сообщений о сети
         String net2 = getString(R.string.net2);
         String net = getString(R.string.net);
-
-        // Извлечение данных из пользовательского ввода
         title = Title.getText().toString().trim();
         desc = Desc.getText().toString().trim();
         lang = Lang.getText().toString();
-
-        // Создание объекта DataClass с полученными данными
         DataClass dataClass = new DataClass(title, desc, lang, imageUrl, isChecked);
-
-        // Проверка доступности сети
         if (isNetworkConnected()) {
-            // - Отправка данных в базу данных и добавление обработчика успешного выполнения
             databaseReference.setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
-                        // Если операция завершена успешно, отобразить сообщение "Обновлено!"
                         Toast.makeText(UpdateActivity.this, "Обновлено!", Toast.LENGTH_SHORT).show();
-                        finish(); // Закрыть текущую активность
+                        finish();
                     }
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    // Если операция завершится неудачно, отобразить сообщение об ошибке сети
                     Toast.makeText(UpdateActivity.this, net2 + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                 }
             });
         } else {
-            // Если сеть недоступна, отобразить сообщение о недоступности сети
             Toast.makeText(UpdateActivity.this, net, Toast.LENGTH_SHORT).show();
         }
     }
 
-    // Метод для проверки подключения к сети
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo Network = cm.getActiveNetworkInfo();

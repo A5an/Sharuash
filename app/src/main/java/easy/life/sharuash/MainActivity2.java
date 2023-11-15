@@ -66,21 +66,21 @@ public class MainActivity2 extends AppCompatActivity {
         session = new SessionManager(getApplicationContext());
 
 
-        binding.resend.setOnClickListener(new View.OnClickListener() { // Обработчик для кнопки "resend" (отправить код повторно)
+        binding.resend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity2.this, "Код успешно отправлен", Toast.LENGTH_SHORT).show();
             }
         });
 
-        // Обработчик для кнопки "verify" (проверить код)
+
         binding.verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 binding.progressBar2.setVisibility(View.VISIBLE);
                 binding.verify.setVisibility(View.INVISIBLE);
 
-                // Проверка, заполнены ли все поля ввода кода
+
                 if (binding.otpBox1.getText().toString().trim().isEmpty() ||
                         binding.otpBox2.getText().toString().trim().isEmpty() ||
                         binding.otpBox3.getText().toString().trim().isEmpty() ||
@@ -91,7 +91,6 @@ public class MainActivity2 extends AppCompatActivity {
                     Toast.makeText(MainActivity2.this, "Код не правильный!", Toast.LENGTH_SHORT).show();
                 } else {
                     if (verificationId != null) {
-                        // Формирование полного кода из шести частей
                         String code = binding.otpBox1.getText().toString().trim() +
                                 binding.otpBox2.getText().toString().trim() +
                                 binding.otpBox3.getText().toString().trim() +
@@ -99,9 +98,7 @@ public class MainActivity2 extends AppCompatActivity {
                                 binding.otpBox5.getText().toString().trim() +
                                 binding.otpBox6.getText().toString().trim();
 
-                        // Создание учетных данных для проверки номера телефона
                         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
-                        // Аутентификация пользователя с использованием учетных данных
                         FirebaseAuth.getInstance()
                                 .signInWithCredential(credential)
                                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -111,17 +108,13 @@ public class MainActivity2 extends AppCompatActivity {
                                             binding.progressBar2.setVisibility(View.VISIBLE);
                                             binding.verify.setVisibility(View.INVISIBLE);
                                             Toast.makeText(MainActivity2.this, "Добро пожаловать!", Toast.LENGTH_SHORT).show();
-                                            // - Создать намерение, путь для перехода к MainActivity2 и очистить задачу
                                             Intent intent = new Intent(MainActivity2.this, Main2.class);
                                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                            // - Запустить MainActivity2
                                             startActivity(intent);
-                                            // - Установить статус входа пользователя в true
                                             session.setLogin(true);
                                         } else {
                                             binding.progressBar2.setVisibility(View.GONE);
                                             binding.verify.setVisibility(View.VISIBLE);
-                                            // - Отобразить сообщение "Код не правильный!"
                                             Toast.makeText(MainActivity2.this, "Код не правильный!", Toast.LENGTH_SHORT).show();
                                         }
                                     }
