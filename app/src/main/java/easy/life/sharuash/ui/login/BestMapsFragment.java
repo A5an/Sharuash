@@ -135,68 +135,73 @@ public class BestMapsFragment extends Fragment {
                 }
             });
 
-            OkHttpClient client = new OkHttpClient();
-
-            String api_key = BuildConfig.GOG_API;
-
-            StringBuilder stringBuilder = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
-            stringBuilder.append("location=" + lat + "," + lng);
-            stringBuilder.append("&radius=6000");
-            stringBuilder.append("&keyword=ветеренарная");
-            stringBuilder.append("&sensor=true");
-            stringBuilder.append("&key=" + api_key);
-            String url = stringBuilder.toString();
-
-            Request request = new Request.Builder()
-                    .url(url)
-                    .build();
-
-            GoogleMap finalGoogleMap1 = googleMap;
-            client.newCall(request).enqueue(new Callback() {
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    e.printStackTrace();
-                }
-
-                @Override
-                public void onResponse(Call call, Response response) throws IOException {
-                    if (response.isSuccessful()) {
-                        String jsonResponse = response.body().string();
-                        if (getActivity() != null) {
-                            getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    if (finalGoogleMap1 != null) {
-                                        try {
-                                            JSONObject jsonObject = new JSONObject(jsonResponse);
-                                            JSONArray resultsArray = jsonObject.getJSONArray("results");
-
-                                            for (int i = 0; i < resultsArray.length(); i++) {
-                                                JSONObject placeObject = resultsArray.getJSONObject(i);
-                                                JSONObject geometryObject = placeObject.getJSONObject("geometry");
-                                                JSONObject locationObject = geometryObject.getJSONObject("location");
-                                                double placeLat = locationObject.getDouble("lat");
-                                                double placeLng = locationObject.getDouble("lng");
-                                                String placeName = placeObject.getString("name");
-
-                                                // Add markers for places
-                                                finalGoogleMap1.addMarker(new MarkerOptions().position(new LatLng(placeLat, placeLng)).title(placeName));
-                                            }
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                        }
-                                    }
-                                }
-                            });
-                        }
-                    } else {
-
-                    }
-                }
-            });
+            fetchNearbyPlaces(googleMap, lat, lng);
 
         }
     };
+
+    private void fetchNearbyPlaces(GoogleMap googleMap, double lat, double lng) {
+
+        OkHttpClient client = new OkHttpClient();
+
+        String api_key = BuildConfig.GOG_API;
+
+        StringBuilder stringBuilder = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+        stringBuilder.append("location=" + lat + "," + lng);
+        stringBuilder.append("&radius=6000");
+        stringBuilder.append("&keyword=ветеренарная");
+        stringBuilder.append("&sensor=true");
+        stringBuilder.append("&key=" + api_key);
+        String url = stringBuilder.toString();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    String jsonResponse = response.body().string();
+                    if (getActivity() != null) {
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (googleMap != null) {
+                                    try {
+                                        JSONObject jsonObject = new JSONObject(jsonResponse);
+                                        JSONArray resultsArray = jsonObject.getJSONArray("results");
+
+                                        for (int i = 0; i < resultsArray.length(); i++) {
+                                            JSONObject placeObject = resultsArray.getJSONObject(i);
+                                            JSONObject geometryObject = placeObject.getJSONObject("geometry");
+                                            JSONObject locationObject = geometryObject.getJSONObject("location");
+                                            double placeLat = locationObject.getDouble("lat");
+                                            double placeLng = locationObject.getDouble("lng");
+                                            String placeName = placeObject.getString("name");
+
+                                            // Add markers for places
+                                            googleMap.addMarker(new MarkerOptions().position(new LatLng(placeLat, placeLng)).title(placeName));
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                        });
+                    }
+                } else {
+                    // Handle failure
+                }
+            }
+        });
+    }
+
 
     @Nullable
     @Override
@@ -213,7 +218,7 @@ public class BestMapsFragment extends Fragment {
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
 
-        Places.initialize(context.getApplicationContext(), "AIzaSyASO95vCcQNQrzr0lERusMhR62QUjEMxB0");
+        Places.initialize(context.getApplicationContext(), BuildConfig.GOG_API);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(BestMapsFragment.this.context);
         googleMap = googleMap;
 
@@ -223,6 +228,7 @@ public class BestMapsFragment extends Fragment {
                     @Override
                     public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
                         getCurrentLocation();
+
                     }
 
                     @Override
@@ -292,6 +298,7 @@ public class BestMapsFragment extends Fragment {
                             MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(myloc).icon(icon);
                             googleMap.addMarker(markerOptions);
                             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                            fetchNearbyPlaces(googleMap, lat, lng);
                         } else {
                             Toast.makeText(context, "Turn on permission!", Toast.LENGTH_SHORT).show();
                         }
